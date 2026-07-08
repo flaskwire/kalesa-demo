@@ -1,29 +1,32 @@
 /* ============================================
    Kalesa Group — main.js
-   Progressive enhancement:
-   1) Add js-ready to <body> immediately so
-      CSS can safely hide elements for animation
-   2) Set up all animations / interactions
+   Progressive enhancement via .js-ready body class
    ============================================ */
-
 (function () {
-  // Mark body as JS-capable so CSS animations activate
+
+  // Activate animations immediately
   document.body.classList.add('js-ready');
 
-  /* ---- Mobile nav ---- */
-  var toggle   = document.querySelector('.nav-toggle');
-  var navLinks = document.getElementById('navLinks');
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', function () {
-      navLinks.classList.toggle('nav-open');
+  // ---- Active nav link ----
+  var path = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a').forEach(function (a) {
+    if (a.getAttribute('href') === path) a.classList.add('active');
+  });
+
+  // ---- Mobile nav ----
+  var toggle = document.querySelector('.nav-toggle');
+  var navEl   = document.getElementById('navLinks');
+  if (toggle && navEl) {
+    toggle.addEventListener('click', function () { navEl.classList.toggle('nav-open'); });
+    document.addEventListener('click', function (e) {
+      if (!toggle.contains(e.target) && !navEl.contains(e.target)) navEl.classList.remove('nav-open');
     });
   }
 
-  /* ---- Particle canvas ---- */
+  // ---- Particle canvas (hero only) ----
   var canvas = document.getElementById('heroCanvas');
   if (canvas) {
     var ctx = canvas.getContext('2d');
-
     function resize() {
       canvas.width  = canvas.parentElement.offsetWidth;
       canvas.height = canvas.parentElement.offsetHeight;
@@ -31,101 +34,100 @@
     resize();
     window.addEventListener('resize', resize);
 
-    var particles = [];
-    for (var i = 0; i < 52; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.5 + 0.5,
-        dx: (Math.random() - .5) * .3,
-        dy: (Math.random() - .5) * .3,
-        alpha: Math.random() * .4 + .1
+    var pts = [];
+    for (var i = 0; i < 55; i++) {
+      pts.push({
+        x:  Math.random() * canvas.width,
+        y:  Math.random() * canvas.height,
+        r:  Math.random() * 1.4 + 0.4,
+        dx: (Math.random() - .5) * .28,
+        dy: (Math.random() - .5) * .28,
+        a:  Math.random() * .35 + .08
       });
     }
 
-    function draw() {
+    function drawCanvas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(function (p) {
+      pts.forEach(function (p) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(201,160,99,' + p.alpha + ')';
+        ctx.fillStyle = 'rgba(196,30,42,' + p.a + ')';
         ctx.fill();
         p.x += p.dx; p.y += p.dy;
         if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
       });
-      // connecting lines
-      for (var a = 0; a < particles.length; a++) {
-        for (var b = a + 1; b < particles.length; b++) {
-          var dist = Math.hypot(particles[a].x - particles[b].x, particles[a].y - particles[b].y);
-          if (dist < 115) {
+      for (var a = 0; a < pts.length; a++) {
+        for (var b = a + 1; b < pts.length; b++) {
+          var d = Math.hypot(pts[a].x - pts[b].x, pts[a].y - pts[b].y);
+          if (d < 120) {
             ctx.beginPath();
-            ctx.moveTo(particles[a].x, particles[a].y);
-            ctx.lineTo(particles[b].x, particles[b].y);
-            ctx.strokeStyle = 'rgba(201,160,99,' + (.09 * (1 - dist / 115)) + ')';
-            ctx.lineWidth = .6;
+            ctx.moveTo(pts[a].x, pts[a].y);
+            ctx.lineTo(pts[b].x, pts[b].y);
+            ctx.strokeStyle = 'rgba(196,30,42,' + (.07 * (1 - d / 120)) + ')';
+            ctx.lineWidth = .5;
             ctx.stroke();
           }
         }
       }
-      requestAnimationFrame(draw);
+      requestAnimationFrame(drawCanvas);
     }
-    draw();
+    drawCanvas();
   }
 
-  /* ---- Animated counters ---- */
-  function animateCounter(el) {
-    var target   = parseFloat(el.dataset.target);
-    var suffix   = el.dataset.suffix || '';
-    var isFloat  = String(target).includes('.');
-    var duration = 1800;
-    var start    = performance.now();
-    function step(now) {
-      var t    = Math.min((now - start) / duration, 1);
-      var ease = 1 - Math.pow(1 - t, 3);
-      var val  = target * ease;
-      el.textContent = (isFloat ? val.toFixed(1) : Math.floor(val)) + suffix;
-      if (t < 1) requestAnimationFrame(step);
-      else el.textContent = target + suffix;
-    }
-    requestAnimationFrame(step);
-  }
-
-  /* ---- Intersection Observer for reveal + counters ---- */
+  // ---- Intersection Observer ----
   var seen = new Set();
 
   var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      el.classList.add('visible');
-      io.unobserve(el);
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
 
-  var counterIO = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting || seen.has(entry.target)) return;
-      seen.add(entry.target);
-      animateCounter(entry.target);
+  // Counter observer
+  var cio = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting || seen.has(e.target)) return;
+      seen.add(e.target);
+      var el = e.target;
+      var target  = parseFloat(el.dataset.target);
+      var suffix  = el.dataset.suffix || '';
+      var isFloat = String(target).includes('.');
+      var dur = 1800, start = performance.now();
+      (function step(now) {
+        var t = Math.min((now - start) / dur, 1);
+        var ease = 1 - Math.pow(1 - t, 3);
+        el.textContent = (isFloat ? (target * ease).toFixed(1) : Math.floor(target * ease)) + suffix;
+        if (t < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      })(start);
     });
-  }, { threshold: 0.5 });
+  }, { threshold: .5 });
 
-  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-  document.querySelectorAll('.service-card').forEach(function (el) { io.observe(el); });
-  document.querySelectorAll('.why-item').forEach(function (el) { io.observe(el); });
-  document.querySelectorAll('.fact-item').forEach(function (el) { io.observe(el); });
-  document.querySelectorAll('.counter').forEach(function (el) { counterIO.observe(el); });
+  document.querySelectorAll('.reveal, .svc-card, .diff-item, .pillar, .agency-tag').forEach(function (el) { io.observe(el); });
+  document.querySelectorAll('.counter').forEach(function (el) { cio.observe(el); });
 
-  /* ---- Ticker duplicate for seamless loop ---- */
+  // ---- Ticker duplicate ----
   var ticker = document.querySelector('.ticker-inner');
   if (ticker) ticker.innerHTML += ticker.innerHTML;
 
-  /* ---- Live timestamp ---- */
-  var ts   = document.getElementById('liveTimestamp');
+  // ---- Live timestamp ----
+  var ts = document.getElementById('liveTs');
   var mins = 0;
-  if (ts) {
-    setInterval(function () { ts.textContent = (++mins) + 'm ago'; }, 60000);
+  if (ts) setInterval(function () { ts.textContent = (++mins) + 'm ago'; }, 60000);
+
+  // ---- Contact form (basic prevent default) ----
+  var form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('[type=submit]');
+      btn.textContent = 'Message sent ✓';
+      btn.disabled = true;
+      btn.style.background = '#059669';
+    });
   }
 
 })();

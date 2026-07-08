@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Kalesa Health</title>
+<meta name="description" content="Get in touch with Kalesa Health — book a consultation or request a capability statement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Kalesa <span class="logo-accent">Group</span><span class="logo-badge">GovCon</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="govcon.html">GovCon Profile</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <span class="header-phone">+1 (770) 877-1050</span>
+      <a href="contact.html" class="btn btn-primary btn-sm">Capability Statement</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow page-hero-eyebrow">Get in Touch</span>
+    <h1>Let's talk about your program</h1>
+    <p>Reach out to discuss an engagement, request our capability statement, or explore teaming and subcontracting opportunities.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container contact-grid">
+
+    <!-- Contact info sidebar -->
+    <aside class="contact-info-box reveal">
+      <h3>Contact Information</h3>
+
+      <div class="contact-row">
+        <div class="contact-icon">&#128100;</div>
+        <div>
+          <div class="contact-label">Point of Contact</div>
+          <div class="contact-value">Bong Castillo</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.4);margin-top:2px;">Co-Founder &amp; CEO</div>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-icon">&#128222;</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value"><a href="tel:+17708771050">+1 (770) 877-1050</a></div>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-icon">&#9993;</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:bong@kalesahealth.com">bong@kalesahealth.com</a></div>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-icon">&#128205;</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Atlanta, Georgia</div>
+        </div>
+      </div>
+
+      <div class="contact-row" style="border-bottom:none;">
+        <div class="contact-icon">&#128197;</div>
+        <div>
+          <div class="contact-label">Book a Meeting</div>
+          <div class="contact-value">
+            <a href="#" style="color:var(--red-light);">[ Booking link TBD ]</a>
+          </div>
+          <div style="font-size:12px;color:rgba(255,255,255,.35);margin-top:4px;">Calendly / Cal.com — add link after kickoff</div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);">
+        <div style="font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.3);margin-bottom:12px;">Also see</div>
+        <a href="govcon.html" class="btn btn-outline-red btn-sm" style="width:100%;justify-content:center;margin-bottom:10px;">GovCon Profile</a>
+        <a href="services.html" class="btn btn-outline btn-sm" style="width:100%;justify-content:center;background:transparent;border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.6);">Our Services</a>
+      </div>
+    </aside>
+
+    <!-- Contact form -->
+    <div class="contact-form reveal reveal-delay-1">
+      <h3>Send a Message</h3>
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name *</label>
+            <input type="text" id="fname" name="fname" placeholder="Jane" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name *</label>
+            <input type="text" id="lname" name="lname" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="jane@agency.gov" required>
+        </div>
+        <div class="form-group">
+          <label for="org">Organization / Agency</label>
+          <input type="text" id="org" name="org" placeholder="Department of Veterans Affairs">
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject *</label>
+          <select id="subject" name="subject" required>
+            <option value="" disabled selected>Select a topic</option>
+            <option>General IT Services</option>
+            <option>Telecom Services</option>
+            <option>Healthcare IT Services</option>
+            <option>Teaming / Subcontracting</option>
+            <option>Capability Statement Request</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" placeholder="Briefly describe your program needs or what you'd like to discuss..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:15px;">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Kalesa <span>Group</span></div>
+        <p class="footer-tagline">Connecting people with technology across federal and SLED environments.</p>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="govcon.html">GovCon Profile</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Services</h4><ul>
+        <li><a href="services.html#it">General IT</a></li>
+        <li><a href="services.html#telecom">Telecom</a></li>
+        <li><a href="services.html#healthcare">Healthcare IT</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="tel:+17708771050">+1 (770) 877-1050</a></li>
+        <li><a href="mailto:bong@kalesahealth.com">bong@kalesahealth.com</a></li>
+        <li><a href="#">Atlanta, Georgia</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Kalesa Health. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
