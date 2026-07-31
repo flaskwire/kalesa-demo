@@ -130,4 +130,38 @@
     });
   }
 
+  // ---- Dark mode toggle ----
+  var THEME_KEY = 'kalesa-theme';
+  var htmlEl = document.documentElement;
+
+  function applyTheme(theme) {
+    htmlEl.setAttribute('data-theme', theme);
+    localStorage.setItem(THEME_KEY, theme);
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = theme === 'dark' ? '☀' : '🌙';
+  }
+
+  // Load saved preference, fall back to OS preference
+  var savedTheme = localStorage.getItem(THEME_KEY);
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyTheme('dark');
+  }
+
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var current = htmlEl.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  // Also respond to OS-level changes
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+      if (!localStorage.getItem(THEME_KEY)) applyTheme(e.matches ? 'dark' : 'light');
+    });
+  }
+
 })();

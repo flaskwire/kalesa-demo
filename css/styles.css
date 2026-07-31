@@ -1,7 +1,12 @@
 /* ============================================
-   Kalesa Group — styles.css
+   Kalesa Group â€” styles.css
    Palette: Crimson Red + Clean White/Light + Near-Black (text only)
    Extracted from Kalesa Health logo branding
+
+   FONT CHANGE (2026-07-31):
+   --font-heading swapped from Fraunces â†’ Inter (sans-serif)
+   Fraunces retained for logo only via --font-display
+   font-style:italic removed from h1 em + mission-quote
    ============================================ */
 
 :root {
@@ -20,7 +25,9 @@
   --white:        #FFFFFF;
   --off-white:    #F9FAFB;
 
-  --font-heading: 'Fraunces', Georgia, serif;
+  /* â”€â”€ FONT CHANGE: headings now use Inter (no quirky Fraunces "f") â”€â”€ */
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Fraunces', Georgia, serif; /* logo + footer wordmark only */
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --max-width:    1160px;
   --radius-sm:    5px;
@@ -34,7 +41,8 @@ body  { font-family: var(--font-body); color: var(--dark); background: var(--whi
 img   { max-width:100%; display:block; }
 a     { text-decoration:none; color:inherit; }
 
-h1,h2,h3,h4 { font-family: var(--font-heading); font-weight:600; line-height:1.2; color: var(--dark); }
+/* Headings: Inter 700 â€” clean "f", consistent with body text style */
+h1,h2,h3,h4 { font-family: var(--font-body); font-weight:700; line-height:1.2; color: var(--dark); }
 h1  { font-size: clamp(34px, 5vw, 54px); }
 h2  { font-size: clamp(26px, 3.5vw, 38px); }
 h3  { font-size: 20px; }
@@ -89,11 +97,13 @@ p   { color: var(--slate); }
   padding:0 32px; height:68px;
   max-width:var(--max-width); margin:0 auto;
 }
+/* Logo keeps Fraunces â€” it's a wordmark, not running text */
 .logo {
-  font-family:var(--font-heading); font-size:20px; font-weight:600;
+  font-family: var(--font-display); font-size:25px; font-weight:700;
   color:var(--dark); letter-spacing:.01em;
-  display:flex; align-items:center; gap:10px;
+  display:flex; align-items:center; gap:12px;
 }
+.logo-mark { height:42px; width:auto; display:block; flex-shrink:0; }
 .logo-accent { color:var(--red); }
 .logo-badge {
   font-family:var(--font-body); font-size:10px; font-weight:700;
@@ -115,7 +125,6 @@ p   { color: var(--slate); }
   height:2px; background:var(--red); border-radius:1px;
 }
 .header-right { display:flex; align-items:center; gap:20px; }
-.header-phone { font-size:13.5px; color:var(--slate); }
 .nav-toggle { display:none; background:none; border:none; cursor:pointer; padding:4px; }
 .nav-toggle span { display:block; width:22px; height:2px; background:var(--dark); margin:5px 0; transition:all .25s; }
 
@@ -183,7 +192,8 @@ section { padding:88px 0; }
 }
 .hero-eyebrow::before { content:''; display:block; width:28px; height:2px; background:var(--red); }
 .hero h1 { color:var(--dark); margin-bottom:22px; }
-.hero h1 em { font-style:italic; color:var(--red); }
+/* â”€â”€ NO italic on em â€” Inter italic "f" also looks off; use color only â”€â”€ */
+.hero h1 em { font-style:normal; color:var(--red); }
 .hero .lead { color:var(--slate); font-size:17px; max-width:480px; margin-bottom:36px; }
 .hero-actions { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:52px; }
 
@@ -193,7 +203,7 @@ section { padding:88px 0; }
   border-top:1px solid var(--border);
 }
 .hero-stat .num {
-  font-family:var(--font-heading); font-size:28px; font-weight:600; color:var(--red);
+  font-size:28px; font-weight:700; color:var(--red);
 }
 .hero-stat .label { font-size:12px; color:var(--slate); margin-top:4px; }
 
@@ -283,12 +293,13 @@ section { padding:88px 0; }
 .mission-text .eyebrow { color:var(--red); }
 .mission-text h2 { color:var(--dark); margin-bottom:20px; }
 .mission-text p { color:var(--slate); font-size:16px; margin-bottom:16px; }
+/* â”€â”€ NO italic â€” just the red border and weight convey emphasis â”€â”€ */
 .mission-quote {
   border-left:3px solid var(--red);
   padding-left:20px;
-  font-family:var(--font-heading); font-style:italic;
+  font-style:normal;
   font-size:17px; color:var(--dark); line-height:1.6;
-  margin-top:24px;
+  margin-top:24px; font-weight:500;
 }
 
 .mission-pillars { display:flex; flex-direction:column; gap:16px; }
@@ -346,7 +357,7 @@ section { padding:88px 0; }
   font-size:13.5px; color:var(--mid);
   display:flex; align-items:flex-start; gap:8px;
 }
-.svc-list li::before { content:'→'; color:var(--red); font-size:12px; flex-shrink:0; margin-top:2px; }
+.svc-list li::before { content:'â†’'; color:var(--red); font-size:12px; flex-shrink:0; margin-top:2px; }
 .svc-link {
   font-size:13.5px; font-weight:600; color:var(--red);
   display:inline-flex; align-items:center; gap:4px;
@@ -392,7 +403,7 @@ section { padding:88px 0; }
 .diff-item:nth-last-child(-n+2) { border-bottom:none; }
 .diff-item:hover { background:var(--off-white); }
 .diff-num {
-  font-family:var(--font-heading); font-size:28px; font-weight:600;
+  font-size:28px; font-weight:700;
   color:rgba(196,30,42,.15); line-height:1; flex-shrink:0; min-width:40px;
 }
 .diff-item h4 { font-size:16px; margin-bottom:6px; font-family:var(--font-body); font-weight:600; }
@@ -480,7 +491,7 @@ section { padding:88px 0; }
 }
 .naics-table td { padding:13px 14px; border-bottom:1px solid var(--border); font-size:14px; }
 .naics-table tr:hover td { background:var(--off-white); }
-.naics-code-cell { font-weight:700; color:var(--red); font-family:var(--font-heading); font-size:14px; }
+.naics-code-cell { font-weight:700; color:var(--red); font-size:14px; }
 .naics-cat-badge {
   font-size:11px; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
   padding:3px 8px; border-radius:3px;
@@ -503,6 +514,16 @@ section { padding:88px 0; }
   position:sticky; top:88px;
   box-shadow:0 8px 24px rgba(17,19,24,.05);
 }
+.schedule-cta {
+  background:linear-gradient(120deg, var(--red-dark) 0%, var(--red) 100%);
+  border-radius:var(--radius-lg); padding:28px;
+  margin-bottom:32px; text-align:center;
+  box-shadow:0 12px 28px rgba(196,30,42,.28);
+}
+.schedule-cta-icon { font-size:30px; margin-bottom:10px; }
+.schedule-cta h4 { color:#fff; font-size:19px; margin-bottom:6px; }
+.schedule-cta p { color:rgba(255,255,255,.9); font-size:13.5px; line-height:1.5; margin-bottom:20px; }
+.schedule-cta .btn { width:100%; justify-content:center; padding:14px; font-size:15px; font-weight:700; }
 .contact-info-box h3 { color:var(--dark); font-size:18px; margin-bottom:24px; }
 .contact-row {
   display:flex; gap:14px; align-items:flex-start;
@@ -526,6 +547,8 @@ section { padding:88px 0; }
 .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 .form-group { margin-bottom:18px; }
 .form-group label { display:block; font-size:13.5px; font-weight:600; color:var(--mid); margin-bottom:7px; }
+.field-note { font-size:12px; color:var(--slate); margin-top:6px; display:flex; justify-content:space-between; }
+.field-note .char-count.ok { color:#1C9A57; }
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -544,9 +567,10 @@ section { padding:88px 0; }
 .form-group textarea { resize:vertical; min-height:120px; }
 
 /* ============ FOOTER ============ */
+/* Footer wordmark keeps Fraunces â€” intentional display type */
 .site-footer { background:var(--off-white); color:var(--slate); padding:64px 0 28px; border-top:3px solid var(--red); }
 .footer-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
-.footer-logo { font-family:var(--font-heading); font-size:21px; font-weight:600; color:var(--dark); margin-bottom:12px; }
+.footer-logo { font-family: var(--font-display); font-size:21px; font-weight:600; color:var(--dark); margin-bottom:12px; }
 .footer-logo span { color:var(--red); }
 .footer-tagline { font-size:13.5px; color:var(--slate); max-width:260px; line-height:1.6; }
 .footer-col h4 { font-family:var(--font-body); color:var(--dark); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; margin-bottom:16px; }
@@ -597,13 +621,142 @@ section { padding:88px 0; }
   .svc-detail-sidebar, .govcon-facts, .contact-info-box { position:static; }
   .footer-grid { grid-template-columns:1fr 1fr; gap:36px; }
 }
+@media (max-width:1180px) and (min-width:681px) {
+  .header-inner { padding:0 20px; }
+  .nav-links { gap:16px; }
+  .nav-links a { font-size:13px; }
+  .header-right { gap:12px; }
+  .header-cta { padding:8px 14px; font-size:12.5px; }
+}
+.nav-links .nav-cta-mobile { display:none; }
 @media (max-width:680px) {
   .nav-links:not(.nav-open){ display:none; }
   .nav-toggle { display:block; }
-  .header-phone { display:none; }
+  .header-cta { display:none; }
+  .nav-links.nav-open .nav-cta-mobile {
+    display:inline-flex; align-items:center; justify-content:center;
+    background:var(--red); color:#fff !important; font-weight:600;
+    font-size:14px; padding:12px 18px; border-radius:8px; margin-top:6px;
+  }
   .container { padding:0 20px; }
   section { padding:64px 0; }
   .hero-stats { gap:24px; flex-wrap:wrap; }
   .svc-items-grid, .form-row { grid-template-columns:1fr; }
   .footer-grid { grid-template-columns:1fr; }
 }
+@media (min-width:681px) {
+  .nav-links a { white-space:nowrap; }
+}
+
+
+/* ============================================================
+   DARK MODE
+   Toggle via <html data-theme="dark">
+   JS saves preference to localStorage
+   ============================================================ */
+
+/* â”€â”€ Toggle button in header â”€â”€ */
+.theme-toggle {
+  background: none; border: 1.5px solid var(--border);
+  border-radius: 20px; cursor: pointer;
+  padding: 6px 12px; font-size: 16px; line-height: 1;
+  color: var(--slate); transition: all .2s ease;
+  display: flex; align-items: center; gap: 6px;
+}
+.theme-toggle:hover { border-color: var(--red); color: var(--red); }
+
+/* â”€â”€ Dark mode variable overrides â”€â”€ */
+[data-theme="dark"] {
+  --dark:      #F1F3F5;
+  --mid:       #D1D5DB;
+  --slate:     #9CA3AF;
+  --border:    rgba(255,255,255,0.10);
+  --light:     #1E2636;
+  --white:     #141B27;
+  --off-white: #1A2235;
+}
+
+[data-theme="dark"] body {
+  background: #0D1117;
+  color: var(--dark);
+}
+
+/* Header */
+[data-theme="dark"] .site-header {
+  background: rgba(13,17,23,.97);
+}
+[data-theme="dark"] .nav-links.nav-open {
+  background: #141B27;
+}
+
+/* Hero */
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, #0D1117 0%, #141B27 55%, #1A0B10 100%);
+}
+[data-theme="dark"] .page-hero {
+  background: linear-gradient(135deg, #141B27 0%, #1A0B10 55%, #200D12 100%);
+}
+[data-theme="dark"] .page-hero h1 { color: var(--dark); }
+
+/* Cards & surfaces */
+[data-theme="dark"] .hero-card,
+[data-theme="dark"] .pillar,
+[data-theme="dark"] .svc-card,
+[data-theme="dark"] .svc-item-card,
+[data-theme="dark"] .svc-detail-sidebar,
+[data-theme="dark"] .govcon-facts,
+[data-theme="dark"] .contact-info-box,
+[data-theme="dark"] .contact-form {
+  background: #1E2636;
+}
+
+[data-theme="dark"] .activity-row,
+[data-theme="dark"] .ticker-wrap {
+  background: #1A2235;
+}
+
+/* Tables */
+[data-theme="dark"] .naics-table th,
+[data-theme="dark"] .psc-table th {
+  background: #1E2636;
+  color: var(--slate);
+}
+[data-theme="dark"] .naics-table tr:hover td,
+[data-theme="dark"] .psc-table tr:hover td {
+  background: #232F45;
+}
+
+/* Form inputs */
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+  background: #1A2235;
+  color: var(--dark);
+  border-color: rgba(255,255,255,0.12);
+}
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder {
+  color: var(--slate);
+}
+
+/* Diff items hover */
+[data-theme="dark"] .diff-item:hover { background: #1E2636; }
+
+/* Section backgrounds */
+[data-theme="dark"] .services-overview,
+[data-theme="dark"] .mission-strip,
+[data-theme="dark"] .svc-detail-section:nth-child(even) {
+  background: #1A2235;
+}
+[data-theme="dark"] .agencies { background: #141B27; }
+[data-theme="dark"] .differentiators { background: #141B27; }
+
+/* Footer */
+[data-theme="dark"] .site-footer { background: #0D1117; }
+[data-theme="dark"] .footer-logo { color: #F1F3F5; }
+
+/* Headings inside dark surfaces */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4 { color: var(--dark); }

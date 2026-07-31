@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,24 +10,59 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<!-- EmailJS CDN -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+/* ── Contact-specific styles ── */
+.field-error { border-color: #DC2626 !important; box-shadow: 0 0 0 3px rgba(220,38,38,.1) !important; }
+.field-hint  { font-size: 12px; color: #DC2626; margin-top: 5px; display: none; }
+
+.form-status {
+  display: none; align-items: flex-start; gap: 16px;
+  padding: 20px 24px; border-radius: 10px;
+  margin-bottom: 24px; font-size: 14.5px;
+}
+.form-status.success {
+  background: #F0FDF4; border: 1px solid #BBF7D0; color: #166534;
+  flex-direction: column; align-items: center; text-align: center;
+  padding: 40px 32px;
+}
+.form-status.success .status-icon { font-size: 40px; margin-bottom: 8px; }
+.form-status.success h4 { font-size: 20px; font-family: var(--font-heading); color: #166534; margin-bottom: 6px; }
+.form-status.success p  { color: #15803D; font-size: 15px; }
+.form-status.error { background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B; }
+.form-status.error .status-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+
+.btn-spinner {
+  display: inline-block; width: 15px; height: 15px;
+  border: 2px solid rgba(255,255,255,.4);
+  border-top-color: #fff; border-radius: 50%;
+  animation: spin .7s linear infinite; vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="index.html" class="logo">Kalesa <span class="logo-accent">Group</span></a>
+    <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Kalesa Group" class="logo-mark" width="42" height="42">Kalesa <span class="logo-accent">Group</span></a>
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="government.html">Government</a>
+      <a href="past-performance.html">Past Performance</a>
+      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
+      <a href="assets/capability-statement.pdf" target="_blank" rel="noopener" class="nav-cta-mobile">Capability Statement</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
     </nav>
     <div class="header-right">
-      <span class="header-phone">+1 (770) 877-1050</span>
-<a href="assets/capability-statement.pdf" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Capability Statement</a>    <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+<a href="assets/capability-statement.pdf" class="btn btn-primary btn-sm header-cta" target="_blank" rel="noopener">Capability Statement</a>    <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
+<!-- Page hero -->
 <section class="page-hero">
   <div class="container">
     <span class="eyebrow page-hero-eyebrow">Get in Touch</span>
@@ -35,21 +71,28 @@
   </div>
 </section>
 
+<!-- ========== CONTACT GRID ========== -->
 <section>
   <div class="container contact-grid">
 
-    <!-- Contact info sidebar -->
+    <!-- ── Sidebar: contact info ── -->
     <aside class="contact-info-box reveal">
+      <div class="schedule-cta">
+        <div class="schedule-cta-icon">&#128197;</div>
+        <h4>Prefer to talk it through?</h4>
+        <p>Book a free 30-minute call directly on our calendar — pick a time that works for you.</p>
+        <a href="https://calendly.com/flaskwire-zvj" target="_blank" rel="noopener" class="btn btn-white">Schedule a Meeting &rarr;</a>
+      </div>
+
       <h3>Contact Information</h3>
 
-      <!-- <div class="contact-row">
+      <div class="contact-row">
         <div class="contact-icon">&#128100;</div>
         <div>
           <div class="contact-label">Point of Contact</div>
           <div class="contact-value">Kalesa Group Sales Team</div>
-          <div style="font-size:13px;color:var(--slate);margin-top:2px;">Leo Castillo, Founder/CEO</div>
         </div>
-      </div> -->
+      </div>
 
       <div class="contact-row">
         <div class="contact-icon">&#128222;</div>
@@ -63,81 +106,122 @@
         <div class="contact-icon">&#9993;</div>
         <div>
           <div class="contact-label">Email</div>
-          <div class="contact-value"><a href="mailto:sales@kalesagroup.com">sales@kalesagroup.com</a></div>
+          <div class="contact-value"><a href="/cdn-cgi/l/email-protection#ddaebcb1b8ae9db6bcb1b8aebcbaafb2a8adf3beb2b0"><span class="__cf_email__" data-cfemail="cfbcaea3aabc8fa4aea3aabcaea8bda0babfe1aca0a2">[email&#160;protected]</span></a></div>
         </div>
       </div>
 
-      <div class="contact-row">
+      <div class="contact-row" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
         <div class="contact-icon">&#128205;</div>
         <div>
           <div class="contact-label">Location</div>
           <div class="contact-value">Cumming, Georgia</div>
         </div>
       </div>
-
-      <div class="contact-row" style="border-bottom:none;">
-        <div class="contact-icon">&#128197;</div>
-        <div>
-          <div class="contact-label">Book a Meeting</div>
-          <div class="contact-value">
-            <a href="#" style="color:var(--red);">[ Booking link TBD ]</a>
-          </div>
-          <div style="font-size:12px;color:var(--slate);margin-top:4px;">Calendly / Cal.com — add link after kickoff</div>
-        </div>
-      </div>
-
-      <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-        <div style="font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);margin-bottom:12px;">Also see</div>
-        <a href="government.html" class="btn btn-outline-red btn-sm" style="width:100%;justify-content:center;margin-bottom:10px;">Government Profile</a>
-        <a href="services.html" class="btn btn-outline btn-sm" style="width:100%;justify-content:center;">Our Services</a>
-      </div>
     </aside>
 
-    <!-- Contact form -->
-    <div class="contact-form reveal reveal-delay-1">
-      <h3>Send a Message</h3>
-      <form id="contactForm" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fname">First Name *</label>
-            <input type="text" id="fname" name="fname" placeholder="Jane" required>
-          </div>
-          <div class="form-group">
-            <label for="lname">Last Name *</label>
-            <input type="text" id="lname" name="lname" placeholder="Smith" required>
-          </div>
+    <!-- ── Contact form ── -->
+    <div class="reveal reveal-delay-1">
+      <div class="contact-form">
+        <h3 style="margin-bottom:6px;">Send a Message</h3>
+        <p style="font-size:14px;color:var(--slate);margin-bottom:28px;">We typically respond within one business day.</p>
+
+        <!-- Success state -->
+        <div id="formSuccess" class="form-status success">
+          <div class="status-icon">&#9989;</div>
+          <h4>Message received!</h4>
+          <p>Thank you for reaching out. A member of the Kalesa Group team will get back to you within one business day.</p>
         </div>
-        <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" placeholder="jane@agency.gov" required>
+
+        <!-- Error state -->
+        <div id="formError" class="form-status error">
+          <span class="status-icon">&#9888;</span>
+          <span class="error-text">Something went wrong. Please try again.</span>
         </div>
-        <div class="form-group">
-          <label for="org">Organization / Agency</label>
-          <input type="text" id="org" name="org" placeholder="Department of Veterans Affairs">
-        </div>
-        <div class="form-group">
-          <label for="subject">Subject *</label>
-          <select id="subject" name="subject" required>
-            <option value="" disabled selected>Select a topic</option>
-            <option>General IT Services</option>
-            <option>Telecom Services</option>
-            <option>Healthcare IT Services</option>
-            <option>Teaming / Subcontracting</option>
-            <option>Capability Statement Request</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Message *</label>
-          <textarea id="message" name="message" placeholder="Briefly describe your program needs or what you'd like to discuss..." required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:15px;">Send Message</button>
-      </form>
+
+        <!-- Form fields -->
+        <div id="formWrap">
+          <form id="contactForm" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name <span style="color:var(--red)">*</span></label>
+                <!-- name="fname" maps to {{fname}} in EmailJS template -->
+                <input type="text" id="fname" name="fname" placeholder="Jane" autocomplete="given-name">
+                <div class="field-hint" id="err-fname"></div>
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name <span style="color:var(--red)">*</span></label>
+                <!-- name="lname" maps to {{lname}} in EmailJS template -->
+                <input type="text" id="lname" name="lname" placeholder="Smith" autocomplete="family-name">
+                <div class="field-hint" id="err-lname"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span style="color:var(--red)">*</span></label>
+              <!-- name="email" maps to {{email}} — set as Reply-To in template -->
+              <input type="email" id="email" name="email" placeholder="jane@agency.gov" autocomplete="email">
+              <div class="field-hint" id="err-email"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <!-- name="phone" maps to {{phone}} in EmailJS template -->
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+            </div>
+
+            <div class="form-group">
+              <label for="org">Organization / Agency</label>
+              <!-- name="org" maps to {{org}} in EmailJS template -->
+              <input type="text" id="org" name="org" placeholder="Department of Veterans Affairs">
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject <span style="color:var(--red)">*</span></label>
+              <!-- name="subject" maps to {{subject}} in EmailJS template -->
+              <select id="subject" name="subject">
+                <option value="" disabled selected>Select a topic</option>
+                <option value="General IT Services">General IT Services</option>
+                <option value="Telecom Services">Telecom Services</option>
+                <option value="Healthcare IT Services">Healthcare IT Services</option>
+                <option value="Teaming / Subcontracting">Teaming / Subcontracting</option>
+                <option value="Capability Statement Request">Capability Statement Request</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="field-hint" id="err-subject"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message <span style="color:var(--red)">*</span></label>
+              <!-- name="message" maps to {{message}} in EmailJS template -->
+              <textarea id="message" name="message" placeholder="Briefly describe your program needs or what you'd like to discuss…"></textarea>
+              <div class="field-note"><span>A couple of sentences is plenty.</span><span class="char-count" id="messageCharCount">0 / 10</span></div>
+              <div class="field-hint" id="err-message"></div>
+            </div>
+
+            <!-- Honeypot (spam trap — bots fill this, humans don't) -->
+            <input type="text" name="_honeypot" style="display:none" tabindex="-1" autocomplete="off">
+
+            <!-- Formspree redirect (optional — comment out to stay on page) -->
+            <!-- <input type="hidden" name="_next" value="https://kalesagroup.com/contact.html?submitted=true"> -->
+
+            <button type="submit" id="submitBtn" class="btn btn-primary" style="width:100%;justify-content:center;padding:15px;font-size:15.5px;">
+              Send Message
+            </button>
+
+            <p style="font-size:12px;color:var(--slate);text-align:center;margin-top:12px;">
+              &#128274; Your information is kept private and never shared with third parties.
+            </p>
+
+          </form>
+        </div><!-- /formWrap -->
+      </div><!-- /contact-form -->
     </div>
 
-  </div>
+  </div><!-- /contact-grid -->
 </section>
 
+<!-- ========== FOOTER ========== -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
@@ -149,6 +233,8 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="government.html">Government</a></li>
+        <li><a href="past-performance.html">Past Performance</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul></div>
       <div class="footer-col"><h4>Services</h4><ul>
@@ -158,16 +244,19 @@
       </ul></div>
       <div class="footer-col"><h4>Contact</h4><ul>
         <li><a href="tel:+17708771050">+1 (770) 877-1050</a></li>
-        <li><a href="mailto:sales@kalesagroup.com">sales@kalesagroup.com</a></li>
-        <li><a href="#">Cumming, Georgia</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#addeccc1c8deedc6ccc1c8decccadfc2d8dd83cec2c0"><span class="__cf_email__" data-cfemail="483b29242d3b082329242d3b292f3a273d38662b2725">[email&#160;protected]</span></a></li>
+        <!-- <li><a href="#">Cumming, Georgia</a></li> -->
       </ul></div>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Kalesa Group. All rights reserved.</span>
+      <span><a href="privacy-policy.html">Privacy Policy</a></span>
     </div>
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
+<script src="js/contact.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"b13c76791dc9449486a951482c24b711","r":1}' crossorigin="anonymous"></script>
 </body>
 </html>
