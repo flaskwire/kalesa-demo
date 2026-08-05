@@ -1,0 +1,32 @@
+{
+  "it": {
+    "title": "General IT Services",
+    "summary": "Kalesa Group delivers enterprise-grade IT project management, procurement, and lifecycle support across federal agencies and SLED environments. We ensure personnel can perform their duties without being hindered by outdated tools or fragmented systems.",
+    "items": [
+      { "title": "Project & Program Management",      "description": "Enterprise-grade PM supporting mission-critical IT initiatives — from planning through delivery and transition." },
+      { "title": "Hardware & Software Procurement",   "description": "End-to-end procurement, installation, and commissioning of hardware and software — domestically and internationally." },
+      { "title": "IT Modernization & Consulting",     "description": "One-time professional IT consulting for modernization, system optimization, and integration across legacy and modern platforms." },
+      { "title": "IT Lifecycle Support",              "description": "Ongoing support ensuring personnel can perform their duties without being hindered by outdated technology or broken infrastructure." }
+    ]
+  },
+  "telecom": {
+    "title": "Telecom Services",
+    "summary": "From voice and data to network infrastructure, Kalesa Group manages telecom programs end-to-end — eliminating legacy communication bottlenecks and ensuring secure, uninterrupted connectivity across multi-site government environments.",
+    "items": [
+      { "title": "Telecom Project & Program Management", "description": "Structured PM for voice, data, and network infrastructure programs — from requirements through deployment and handoff." },
+      { "title": "Multi-site Procurement & Installation", "description": "Procurement, installation, and commissioning of telecom hardware and software across multi-site environments, domestically and internationally." },
+      { "title": "Telecom Engineering & Consulting",     "description": "One-time telecom engineering and consulting for specific modernization, optimization, or integration needs." },
+      { "title": "Legacy System Modernization",          "description": "Systematic replacement and modernization of legacy telecom systems to eliminate communication bottlenecks and ensure secure, uninterrupted connectivity." }
+    ]
+  },
+  "healthcare": {
+    "title": "Healthcare IT Services",
+    "summary": "Kalesa Group brings specialized Healthcare IT expertise to federal health agencies and SLED health programs — supporting the clinical and administrative workflows that enable patient outcomes.",
+    "items": [
+      { "title": "Healthcare IT Project Management",  "description": "Structured PM aligned with clinical and administrative workflows — managing complex EHR implementations and health IT deployments." },
+      { "title": "EHR Management & Optimization",    "description": "Electronic Health Records management, optimization, and interoperability support — ensuring clinical systems work together seamlessly." },
+      { "title": "Telemedicine Platform Deployment", "description": "Telemedicine platform deployment, integration, and operational management — expanding care access while maintaining security and compliance." },
+      { "title": "Digital Health Support",           "description": "Enabling clinicians to focus on care — not on navigating broken systems. Day-to-day digital health support and continuous improvement." }
+    ]
+  }
+}
