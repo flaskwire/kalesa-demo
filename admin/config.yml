@@ -1,0 +1,185 @@
+# ============================================================
+# Kalesa Group — Decap CMS Configuration
+# Testing on: demo.flaskwire.com
+# Repo: zengasiwingwa/kalesa_group
+# ============================================================
+
+backend:
+  name: github
+  repo: flaskwire/kalesa-demo
+  branch: main
+  base_url: https://api.netlify.com
+
+site_url: https://demo.flaskwire.com
+display_url: https://demo.flaskwire.com
+
+media_folder: assets/images
+public_folder: assets/images
+
+collections:
+
+  - name: settings
+    label: Site Settings
+    files:
+      - name: site
+        label: Global Settings
+        file: _data/settings.json
+        format: json
+        fields:
+          - { label: Company Name,    name: company_name,  widget: string, default: Kalesa Group }
+          - { label: Tagline,         name: tagline,        widget: string }
+          - { label: Phone,           name: phone,          widget: string, hint: "e.g. +1 (770) 877-1050" }
+          - { label: Email,           name: email,          widget: string }
+          - { label: City / State,    name: location,       widget: string, default: Cumming, Georgia }
+          - { label: Calendly / Booking Link, name: booking_url, widget: string, required: false }
+          - label: SAM.gov Status
+            name: sam_status
+            widget: select
+            options: [Registered, Registered / Pending Approval, Pending, Not Yet Registered]
+          - { label: UEI Number,      name: uei,    widget: string, required: false }
+          - { label: CAGE Code,       name: cage,   widget: string, required: false }
+          - label: Business Designation
+            name: business_size
+            widget: select
+            options: [Small Business, Minority-Owned Small Business, SDVOSB, 8(a), WOSB]
+          - { label: Socioeconomic Status, name: socioeconomic, widget: string, required: false }
+          - { label: Certifications,  name: certifications, widget: string, required: false, default: Pending }
+
+  - name: home
+    label: Home Page
+    files:
+      - name: home
+        label: Home Page Content
+        file: _data/home.json
+        format: json
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Subtext, name: lead, widget: text }
+              - { label: Primary Button Text, name: btn_primary_text, widget: string }
+              - { label: Primary Button URL,  name: btn_primary_url,  widget: string }
+              - { label: Secondary Button Text, name: btn_secondary_text, widget: string }
+              - { label: Secondary Button URL,  name: btn_secondary_url,  widget: string }
+          - label: Mission Section
+            name: mission
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body,    name: body,    widget: text }
+              - { label: Quote,   name: quote,   widget: string }
+          - label: CTA Band
+            name: cta
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Subtext, name: body,    widget: string }
+
+  - name: services
+    label: Services Page
+    files:
+      - name: services
+        label: Services Content
+        file: _data/services.json
+        format: json
+        fields:
+          - label: General IT Services
+            name: it
+            widget: object
+            fields:
+              - { label: Title,   name: title,   widget: string }
+              - { label: Summary, name: summary,  widget: text }
+              - label: Service Items
+                name: items
+                widget: list
+                fields:
+                  - { label: Title,       name: title,       widget: string }
+                  - { label: Description, name: description, widget: text }
+          - label: Telecom Services
+            name: telecom
+            widget: object
+            fields:
+              - { label: Title,   name: title,   widget: string }
+              - { label: Summary, name: summary,  widget: text }
+              - label: Service Items
+                name: items
+                widget: list
+                fields:
+                  - { label: Title,       name: title,       widget: string }
+                  - { label: Description, name: description, widget: text }
+          - label: Healthcare IT Services
+            name: healthcare
+            widget: object
+            fields:
+              - { label: Title,   name: title,   widget: string }
+              - { label: Summary, name: summary,  widget: text }
+              - label: Service Items
+                name: items
+                widget: list
+                fields:
+                  - { label: Title,       name: title,       widget: string }
+                  - { label: Description, name: description, widget: text }
+
+  - name: government
+    label: Government Profile
+    files:
+      - name: government
+        label: Government Profile Content
+        file: _data/government.json
+        format: json
+        fields:
+          - label: NAICS Codes
+            name: naics
+            widget: list
+            fields:
+              - { label: Code,        name: code,        widget: string }
+              - { label: Description, name: description, widget: string }
+              - label: Category
+                name: category
+                widget: select
+                options: [IT & Telecom, Telecom, Healthcare IT]
+          - label: PSC Codes — IT Services
+            name: psc_it
+            widget: list
+            fields:
+              - { label: PSC Code,    name: code,        widget: string }
+              - { label: Description, name: description, widget: string }
+          - label: PSC Codes — Telecom Services
+            name: psc_telecom
+            widget: list
+            fields:
+              - { label: PSC Code,    name: code,        widget: string }
+              - { label: Description, name: description, widget: string }
+          - label: PSC Codes — Healthcare IT
+            name: psc_healthcare
+            widget: list
+            fields:
+              - { label: PSC Code,    name: code,        widget: string }
+              - { label: Description, name: description, widget: string }
+
+  - name: past_performance
+    label: Past Performance
+    folder: _data/performance
+    create: true
+    format: json
+    slug: "{{slug}}"
+    label_singular: Engagement
+    fields:
+      - { label: Agency / Client,  name: agency,      widget: string }
+      - { label: Engagement Title, name: title,        widget: string }
+      - label: Status
+        name: status
+        widget: select
+        options: [Active, Completed, Planned]
+      - { label: Period,           name: period,       widget: string }
+      - label: Service Area
+        name: service_area
+        widget: select
+        options: [General IT, Telecom Services, Healthcare IT]
+      - { label: Location,         name: location,     widget: string }
+      - { label: Description,      name: description,  widget: text }
+      - label: Tags
+        name: tags
+        widget: list
+        field: { label: Tag, name: tag, widget: string }
