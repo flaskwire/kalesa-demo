@@ -3,16 +3,28 @@
     "headline_1": "Technology that",
     "headline_em": "connects people",
     "headline_2": "with mission-critical systems",
-    "lead": "Kalesa Group delivers IT, telecom, and healthcare technology solutions for government agencies and prime contractors — removing barriers so teams can operate with confidence.",
+    "lead": "Kalesa Group delivers ITTTT, telecom, and healthcare technology solutions for government agencies and prime contractors — removing barriers so teams can operate with confidence.",
     "btn_primary_text": "View Government Profile",
     "btn_primary_url": "government.html",
     "btn_secondary_text": "Book a Consultation",
     "btn_secondary_url": "contact.html"
   },
   "stats": [
-    { "number": "3",   "suffix": "",  "label": "Core Service Areas" },
-    { "number": "10",  "suffix": "+", "label": "NAICS Codes" },
-    { "number": "100", "suffix": "%", "label": "Small Business" }
+    {
+      "number": "3",
+      "suffix": "",
+      "label": "Core Service Areas"
+    },
+    {
+      "number": "10",
+      "suffix": "+",
+      "label": "NAICS Codes"
+    },
+    {
+      "number": "100",
+      "suffix": "%",
+      "label": "Small Business"
+    }
   ],
   "mission": {
     "heading": "Connecting people with technology that works",
