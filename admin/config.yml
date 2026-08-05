@@ -9,7 +9,7 @@ backend:
   repo: flaskwire/kalesa-demo
   branch: main
   base_url: https://api.netlify.com
-  site_domain: graceful-torrone-57f8c6.netlify.app
+  site_domain: c496cc2b-c64e-4a16-8384-2a175c425bb3.netlify.app
 
 site_url: https://demo.flaskwire.com
 display_url: https://demo.flaskwire.com
