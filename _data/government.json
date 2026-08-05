@@ -1,0 +1,35 @@
+{
+  "naics": [
+    { "code": "541512", "description": "Computer Systems Design Services",                   "category": "IT & Telecom" },
+    { "code": "541513", "description": "Computer Facilities Management & IT Infrastructure",  "category": "IT & Telecom" },
+    { "code": "541519", "description": "Other IT Consulting Services",                       "category": "IT & Telecom" },
+    { "code": "517919", "description": "Other Telecommunications",                           "category": "Telecom" },
+    { "code": "517111", "description": "Wired Telecommunications Carriers",                  "category": "Telecom" },
+    { "code": "517112", "description": "Wireless Telecommunications Carriers",               "category": "Telecom" },
+    { "code": "541611", "description": "Healthcare Management Consulting",                   "category": "Healthcare IT" },
+    { "code": "518210", "description": "Data Processing, Hosting & Related Services",        "category": "Healthcare IT" },
+    { "code": "621999", "description": "Miscellaneous Ambulatory Healthcare Services",       "category": "Healthcare IT" },
+    { "code": "624190", "description": "Other Individual and Family Services",               "category": "Healthcare IT" }
+  ],
+  "psc_it": [
+    { "code": "D302", "description": "IT Systems Development" },
+    { "code": "D307", "description": "IT Management Services" },
+    { "code": "D310", "description": "Cybersecurity & Data Backup" },
+    { "code": "D316", "description": "IT Network Administration" },
+    { "code": "D318", "description": "Integrated IT Services" },
+    { "code": "D399", "description": "Other IT Services" }
+  ],
+  "psc_telecom": [
+    { "code": "D304", "description": "Telecommunications Services" },
+    { "code": "D305", "description": "Telecom & Transmission Services" }
+  ],
+  "psc_healthcare": [
+    { "code": "Q501", "description": "Medical Examination Services" },
+    { "code": "Q301", "description": "Medical Advisory Services" },
+    { "code": "Q999", "description": "Other Medical Services" },
+    { "code": "D317", "description": "Web-Based Services (Telehealth)" },
+    { "code": "D321", "description": "IT Support for Healthcare Systems" },
+    { "code": "R499", "description": "Other Professional Services" },
+    { "code": "R699", "description": "Administrative Support Services" }
+  ]
+}
