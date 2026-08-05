@@ -5,15 +5,9 @@
 # ============================================================
 
 backend:
-  name: github
-  repo: flaskwire/kalesa-demo
+  name: git-gateway
   branch: main
-  base_url: https://api.netlify.com
-  site_domain: c496cc2b-c64e-4a16-8384-2a175c425bb3.netlify.app
-
-site_url: https://demo.flaskwire.com
-display_url: https://demo.flaskwire.com
-
+  
 media_folder: assets/images
 public_folder: assets/images
 
