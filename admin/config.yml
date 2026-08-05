@@ -7,7 +7,7 @@
 backend:
   name: git-gateway
   branch: main
-
+  
 media_folder: assets/images
 public_folder: assets/images
 
