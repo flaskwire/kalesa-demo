@@ -1,14 +1,14 @@
 {
-  "company_name": "Kalesa Group",
-  "tagline": "Connecting people with technology across federal and SLED environments — IT, telecom, and healthcare solutions for mission-driven outcomes.",
-  "phone": "+1 (770) 877-1050",
-  "email": "sales@kalesagroup.com",
-  "location": "Cumming, Georgia",
-  "booking_url": "",
-  "sam_status": "Registered / Pending Approval",
-  "uei": "",
-  "cage": "",
   "business_size": "Minority-Owned Small Business",
   "socioeconomic": "Minority-Owned Small Business",
-  "certifications": "Pending"
+  "booking_url": "",
+  "company_name": "Kalesa Group",
+  "phone": "+1 (770) 847-0166",
+  "tagline": "Connecting people with technology across federal and SLED environments — IT, telecom, and healthcare solutions for mission-driven outcomes.",
+  "sam_status": "Registered / Pending Approval",
+  "location": "Cumming, Georgia",
+  "certifications": "Pending",
+  "uei": "",
+  "cage": "",
+  "email": "sales@kalesagroup.com"
 }
