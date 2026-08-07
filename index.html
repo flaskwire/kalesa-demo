@@ -368,16 +368,18 @@
 <script src="js/cms-content.js"></script>
 <script src="js/main.js"></script>
 <!-- Netlify Identity redirect handler -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", function(user) {
-      if (!user) {
-        window.netlifyIdentity.on("login", function() {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
+  window.netlifyIdentity && window.netlifyIdentity.init({
+    APIUrl: "https://graceful-torrone-57f8c6.netlify.app/.netlify/identity"
+  });
+  window.netlifyIdentity.on("init", function(user) {
+    if (!user) {
+      window.netlifyIdentity.on("login", function() {
+        document.location.href = "/admin/";
+      });
+    }
+  });
 </script>
 </body>
 </html>
