@@ -39,6 +39,8 @@ collections:
             options: [Small Business, Minority-Owned Small Business, SDVOSB, 8(a), WOSB]
           - { label: Socioeconomic Status, name: socioeconomic, widget: string, required: false }
           - { label: Certifications,  name: certifications, widget: string, required: false, default: Pending }
+          - { label: Footer Tagline,    name: tagline,        widget: text }
+          - { label: Copyright Text,    name: copyright,      widget: string, hint: "Year is added automatically" }
 
   - name: home
     label: Home Page
@@ -64,12 +66,47 @@ collections:
               - { label: Heading, name: heading, widget: string }
               - { label: Body,    name: body,    widget: text }
               - { label: Quote,   name: quote,   widget: string }
+
+          - label: Target Agencies Section
+            name: agencies
+            widget: object
+            fields:
+              - { label: Section Heading, name: heading,        widget: string }
+              - { label: Section Subtext, name: subtext,        widget: text }
+              - { label: Federal Column Heading, name: federal_heading, widget: string }
+              - label: Federal Agency Tags
+                name: federal
+                widget: list
+                fields:
+                  - { label: Agency Name, name: text,    widget: string }
+                  - { label: Highlighted, name: primary, widget: boolean, default: false }
+              - { label: SLED Column Heading, name: sled_heading, widget: string }
+              - label: SLED Agency Tags
+                name: sled
+                widget: list
+                fields:
+                  - { label: Agency Name, name: text,    widget: string }
+                  - { label: Highlighted, name: primary, widget: boolean, default: false }
+          - label: Why Kalesa Group (Differentiators)
+            name: differentiators
+            widget: list
+            max: 6
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Body,  name: body,  widget: text }
           - label: CTA Band
             name: cta
             widget: object
             fields:
               - { label: Heading, name: heading, widget: string }
               - { label: Subtext, name: body,    widget: string }
+          - label: Hero Card Activity Rows
+            name: activity
+            widget: object
+            fields:
+              - { label: IT Row Text,          name: it,         widget: string }
+              - { label: Telecom Row Text,      name: telecom,    widget: string }
+              - { label: Healthcare Row Text,   name: healthcare, widget: string }
 
   - name: services
     label: Services Page
@@ -153,6 +190,39 @@ collections:
               - { label: PSC Code,    name: code,        widget: string }
               - { label: Description, name: description, widget: string }
 
+
+  - name: about
+    label: About Page
+    files:
+      - name: about
+        label: About Page Content
+        file: _data/about.json
+        format: json
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Subtext, name: subtext,  widget: text }
+          - label: Leadership Section
+            name: leadership
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Intro,   name: intro,   widget: text }
+          - label: Mission Section
+            name: mission
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body,    name: body,    widget: text }
+          - label: CTA Band
+            name: cta
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Subtext, name: subtext,  widget: string }
   - name: past_performance
     label: Past Performance
     folder: _data/performance

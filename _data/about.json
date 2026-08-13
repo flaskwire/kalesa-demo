@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "heading": "Built on decades of hands-on technology leadership",
+    "subtext":  "Kalesa Group is led by a team with a long track record of delivering IT, telecom, and healthcare technology programs across complex, mission-driven environments — brought together to build a small business that moves with the discipline of a much larger one."
+  },
+  "leadership": {
+    "heading": "Decades of program experience, applied to a growing small business",
+    "intro":   "Kalesa Group's leadership brings more than two decades of hands-on experience managing enterprise IT, telecom, and healthcare technology programs — including large-scale procurement, multi-site deployments, and mission-critical infrastructure modernization for organizations operating in regulated, high-compliance environments."
+  },
+  "mission": {
+    "heading": "Connecting people with technology",
+    "body":    "We started Kalesa Group to bring that same caliber of technology leadership to organizations that need a partner who understands both the mission and the mechanics of delivery. Whether it's a federal agency modernizing legacy infrastructure or a healthcare program deploying a new EHR platform, our approach stays the same: understand the people the system serves, then build the plan around them."
+  },
+  "cta": {
+    "heading": "Want to talk with our team directly?",
+    "subtext":  "We're happy to walk through our background, discuss an upcoming program, or explore a teaming opportunity."
+  }
+}
