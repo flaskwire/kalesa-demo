@@ -22,7 +22,6 @@ collections:
         format: json
         fields:
           - { label: Company Name,    name: company_name,  widget: string, default: Kalesa Group }
-          - { label: Tagline,         name: tagline,        widget: string }
           - { label: Phone,           name: phone,          widget: string, hint: "e.g. +1 (770) 877-1050" }
           - { label: Email,           name: email,          widget: string }
           - { label: City / State,    name: location,       widget: string, default: Cumming, Georgia }
