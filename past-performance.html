@@ -10,6 +10,27 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<style>
+.pp-card {
+  background:var(--white); border:1px solid var(--border);
+  border-radius:var(--radius-lg); padding:28px; margin-bottom:20px;
+  transition:box-shadow .2s;
+}
+.pp-card:hover { box-shadow:0 6px 24px rgba(0,0,0,.07); }
+.pp-card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; flex-wrap:wrap; gap:10px; }
+.pp-agency { font-size:12px; font-weight:700; color:var(--red); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; }
+.pp-title  { font-size:18px; font-weight:700; color:var(--dark); }
+.pp-badge  { font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:4px 10px; border-radius:3px; flex-shrink:0; }
+.pp-badge.active    { background:rgba(5,150,105,.08);  color:#059669; border:1px solid rgba(5,150,105,.2); }
+.pp-badge.completed { background:var(--light); color:var(--slate); border:1px solid var(--border); }
+.pp-badge.planned   { background:rgba(37,99,235,.07); color:#2563EB; border:1px solid rgba(37,99,235,.15); }
+.pp-meta  { display:flex; gap:20px; margin-bottom:12px; flex-wrap:wrap; }
+.pp-meta-item { font-size:13px; color:var(--slate); }
+.pp-meta-item strong { color:var(--mid); font-weight:600; }
+.pp-desc  { font-size:14.5px; color:var(--slate); margin-bottom:14px; }
+.pp-tags  { display:flex; flex-wrap:wrap; gap:7px; }
+.pp-tag   { font-size:12px; font-weight:500; color:var(--mid); background:var(--off-white); border:1px solid var(--border); padding:4px 10px; border-radius:20px; }
+</style>
 </head>
 <body>
 
@@ -89,6 +110,20 @@
           <p>For clients who need it, a scalable path to longer-term managed services — without locking anyone into more than they need.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Engagements</span>
+      <h2>Past Performance</h2>
+      <p>Our engagement history across federal, SLED, and healthcare IT programs.</p>
+    </div>
+    <div id="performance-cards">
+      <!-- Populated dynamically by cms-content.js from _data/performance.json -->
     </div>
   </div>
 </section>

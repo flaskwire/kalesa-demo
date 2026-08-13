@@ -64,6 +64,53 @@
       el.textContent = new Date().getFullYear();
     });
 
+
+    // data-cms-performance → renders engagement cards from performance.json
+    var perfContainer = document.getElementById('performance-cards');
+    if (perfContainer && data['performance']) {
+      var engagements = data['performance'].engagements || [];
+
+      if (engagements.length === 0) {
+        perfContainer.innerHTML =
+          '<div style="grid-column:1/-1;text-align:center;padding:48px 24px;' +
+          'background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);">' +
+          '<h3 style="margin-bottom:12px;font-size:18px;">Building our track record</h3>' +
+          '<p>Engagements will appear here as they are confirmed for public listing. ' +
+          '<a href="contact.html" style="color:var(--red);font-weight:600;">Contact us</a> ' +
+          'for a full past performance brief or references.</p></div>';
+        return;
+      }
+
+      var statusClass = { Active: 'active', Completed: 'completed', Planned: 'planned' };
+
+      perfContainer.innerHTML = engagements.map(function (e) {
+        var tags = (e.tags || []).map(function (t) {
+          return '<span class="pp-tag">' + t + '</span>';
+        }).join('');
+
+        var badge = e.status
+          ? '<span class="pp-badge ' + (statusClass[e.status] || '') + '">' + e.status + '</span>'
+          : '';
+
+        return '<div class="pp-card">' +
+          '<div class="pp-card-header">' +
+            '<div>' +
+              '<div class="pp-agency">' + (e.agency || '') + '</div>' +
+              '<div class="pp-title">' + (e.title || '') + '</div>' +
+            '</div>' +
+            badge +
+          '</div>' +
+          '<div class="pp-meta">' +
+            (e.period       ? '<div class="pp-meta-item">&#128197; <strong>Period:</strong> ' + e.period + '</div>' : '') +
+            (e.service_area ? '<div class="pp-meta-item">&#128188; <strong>Service Area:</strong> ' + e.service_area + '</div>' : '') +
+            (e.location     ? '<div class="pp-meta-item">&#128205; <strong>Location:</strong> ' + e.location + '</div>' : '') +
+          '</div>' +
+          '<p class="pp-desc">' + (e.description || '') + '</p>' +
+          (tags ? '<div class="pp-tags">' + tags + '</div>' : '') +
+        '</div>';
+      }).join('');
+    }
+
     // data-cms-taglist="file:key.path" → renders array of {text, primary}
     // as <span class="agency-tag [primary]">text</span> inside the container
     document.querySelectorAll('[data-cms-taglist]').forEach(function (el) {

@@ -224,26 +224,31 @@ collections:
               - { label: Subtext, name: subtext,  widget: string }
   - name: past_performance
     label: Past Performance
-    folder: _data/performance
-    create: true
-    format: json
-    slug: "{{slug}}"
-    label_singular: Engagement
-    fields:
-      - { label: Agency / Client,  name: agency,      widget: string }
-      - { label: Engagement Title, name: title,        widget: string }
-      - label: Status
-        name: status
-        widget: select
-        options: [Active, Completed, Planned]
-      - { label: Period,           name: period,       widget: string }
-      - label: Service Area
-        name: service_area
-        widget: select
-        options: [General IT, Telecom Services, Healthcare IT]
-      - { label: Location,         name: location,     widget: string }
-      - { label: Description,      name: description,  widget: text }
-      - label: Tags
-        name: tags
-        widget: list
-        field: { label: Tag, name: tag, widget: string }
+    files:
+      - name: engagements
+        label: Engagements
+        file: _data/performance.json
+        format: json
+        fields:
+          - label: Engagements
+            name: engagements
+            widget: list
+            label_singular: Engagement
+            fields:
+              - { label: Agency / Client,  name: agency,       widget: string }
+              - { label: Engagement Title, name: title,         widget: string }
+              - label: Status
+                name: status
+                widget: select
+                options: [Active, Completed, Planned]
+              - { label: Period,           name: period,        widget: string, hint: "e.g. Jan 2025 – Present" }
+              - label: Service Area
+                name: service_area
+                widget: select
+                options: [General IT, Telecom Services, Healthcare IT]
+              - { label: Location,         name: location,      widget: string }
+              - { label: Description,      name: description,   widget: text }
+              - label: Tags
+                name: tags
+                widget: list
+                field: { label: Tag, name: tag, widget: string }
